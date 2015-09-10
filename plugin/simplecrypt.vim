@@ -5,8 +5,8 @@
 
 " Number of times to ask for the password:
 let g:simplecrypt_tries = 3
-" Whether to make (ciphertext) backups before overwriting:
-let g:simplecrypt_make_backups = 1
+" Whether to warn when an encrypted file is going to backed up:
+let g:simplecrypt_warn_about_backups = 1
 let g:simplecrypt_encrypters = ['simplecrypt#gpg_encrypt',
                                \'simplecrypt#ssl_encrypt']
 let g:simplecrypt_decrypters = ['simplecrypt#gpg_decrypt',
@@ -55,7 +55,6 @@ function! simplecrypt#pre()
     setlocal cmdheight=3
     setlocal viminfo=
     setlocal noswapfile
-    "setlocal nobackup
     setlocal noundofile
     setlocal shell=/bin/sh
     setlocal bin
@@ -155,17 +154,22 @@ function! simplecrypt#WritePre_(command)
     endif
 endfunction
 
-function! simplecrypt#pre_write_backup()
-    " if g:openssl_backup
-    "     silent! exec '!cp '.shellescape(expand('<afile>')).
-    "                 \' '.shellescape(expand('<afile>').'~')
-    " endif
+function! simplecrypt#warn_about_backups()
+    if g:simplecrypt_warn_about_backups && &backup
+        " The password prompt apparently adds empty lines in vim, so we need
+        " more lines:
+        setlocal cmdheight=5
+        echohl WarningMsg
+        echo 'Warning: The &backup option is set; '.expand('<afile>').
+            \' will be backed up (in ciphertext form) to '.&backupdir.'!'
+        echohl None
+    endif
 endfunction
 
 function! simplecrypt#WritePre()
     call simplecrypt#setup('encrypt')
     if exists('b:simplecrypt_encrypt')
-        call simplecrypt#pre_write_backup()
+        call simplecrypt#warn_about_backups()
         call simplecrypt#WritePre_(b:simplecrypt_encrypt)
     endif
 endfunction
