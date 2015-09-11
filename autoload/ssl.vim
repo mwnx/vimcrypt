@@ -1,11 +1,11 @@
 " - OpenSSL --------------------------------------------------------------------
 
 " Interpret 'aes' extension as:
-let g:ssl#aes_cipher = 'aes-256-cbc'
+call vimcrypt#util#initvar('g:ssl#aes_cipher', 'aes-256-cbc')
 " overridden by b:ssl_aes_cipher
 
 " List stolen from the openssl help.
-let g:ssl#ciphers = [
+call vimcrypt#util#initvar('g:ssl#ciphers', [
    \'aes-128-cbc',      'aes-128-ecb',      'aes-192-cbc',      'aes-192-ecb',
    \'aes-256-cbc',      'aes-256-ecb',      'base64',           'bf',
    \'bf-cbc',           'bf-cfb',           'bf-ecb',           'bf-ofb',
@@ -19,7 +19,7 @@ let g:ssl#ciphers = [
    \'rc2-40-cbc',       'rc2-64-cbc',       'rc2-cbc',          'rc2-cfb',
    \'rc2-ecb',          'rc2-ofb',          'rc4',              'rc4-40',
    \'seed',             'seed-cbc',         'seed-cfb',         'seed-ecb',
-   \'seed-ofb']
+   \'seed-ofb'])
 " Extra handled keyword: aes (see g:ssl_aes_cipher)
 
 function! ssl#cipher(cipher)

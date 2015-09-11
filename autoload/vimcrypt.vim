@@ -1,20 +1,5 @@
-" Generic code refactored from Noah Spurrier <noah@noah.org>'s ssl.vim
-"
-
-" if !exists('g:vimcrypt_loaded')
-"     let g:vimcrypt_loaded = 1
-" else
-"     finish
-" endif
-
-" - Utility functions ----------------------------------------------------------
-
-" set var to val if it does not already exist
-function vimcrypt#initvar(var, val)
-    if !exists(a:var)
-        exec 'let '.a:var.' = a:val'
-    endif
-endfunction
+" Generic code, some taken and refactored from Noah Spurrier
+" <noah@noah.org>'s ssl.vim.
 
 " - Generic functions ----------------------------------------------------------
 

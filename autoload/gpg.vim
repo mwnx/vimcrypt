@@ -1,9 +1,7 @@
 " - GPG ------------------------------------------------------------------------
 
-if !exists('g:gpg#encrypt_command')
-    let g:gpg#encrypt_command =
-        \'gpg --no-use-agent --cipher-algo AES256 --symmetric'
-endif
+call vimcrypt#util#initvar('g:gpg#encrypt_command',
+    \'gpg --no-use-agent --cipher-algo AES256 --symmetric')
 " overridden by b:gpg_encrypt_command
 
 function! gpg#current_is_gpg_file()
