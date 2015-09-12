@@ -66,3 +66,8 @@ TODO
   password. If they are the same, don't ask for confirmation.
 - For GPG, add a system to automatically reuse settings for the current
   file (symmetric vs assymetric, cipher, recepients, ...).
+
+License
+-------
+This software (this whole repository) is published under the MIT license.
+See the LICENSE file for details.
