@@ -22,8 +22,7 @@ File type Detection
 -------------------
 Each crypto plugin defines its own file type detection function.
 
-OpenSSl
-~~~~~~~
+###OpenSSl
 The `ssl` plugin detects encryption and which cipher to use based solely on
 the filename's extension. Note that `openssl` does not encode cipher
 information within its files. Therefore, the extension must match the cipher
@@ -36,18 +35,17 @@ file.
 
 Examples:
 
-| Filename        | Command                  |
-| --------------- | ------------------------ |
-| `auth.aes`      | `openssl aes-256-cbc`    |
-| `auth.aesa`     | `openssl aes-256-cbc -a` |
-| `x.bash.bf-ofb  | `openssl bf-ofb`         |
-| `x.bash.bf-ofba | `openssl bf-ofb -a`      |
+| Filename         | Command                  |
+| ---------------  | ------------------------ |
+| `auth.aes`       | `openssl aes-256-cbc`    |
+| `auth.aesa`      | `openssl aes-256-cbc -a` |
+| `x.bash.bf-ofb`  | `openssl bf-ofb`         |
+| `x.bash.bf-ofba` | `openssl bf-ofb -a`      |
 
 This behaviour is compatible with Noah Spurrier <noah@noah.org>'s
 **ssl.vim** plugin.
 
-GPG
-~~~
+###GPG
 The `gpg` plugin uses the filename extension and the output of the `file`
 command to determine whether the file is a GPG encrypted file or not. Thus,
 a GPG encrypted file does not have to bear any particular extension to be
