@@ -42,8 +42,7 @@ Examples:
 | `x.bash.bf-ofb`  | `openssl bf-ofb`         |
 | `x.bash.bf-ofba` | `openssl bf-ofb -a`      |
 
-This behaviour is compatible with Noah Spurrier <noah@noah.org>'s
-**ssl.vim** plugin.
+This behaviour is compatible with Noah Spurrier's **ssl.vim** plugin.
 
 ###GPG
 The `gpg` plugin uses the filename extension and the output of the `file`
@@ -69,3 +68,8 @@ License
 -------
 This software (this whole repository) is published under the MIT license.
 See the LICENSE file for details.
+
+Acknowledgements
+----------------
+- This plugin is inspired by Noah Spurrier's ssl.vim plugin, and takes some
+code from there.
