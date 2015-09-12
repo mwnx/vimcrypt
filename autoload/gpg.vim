@@ -26,13 +26,17 @@ function! gpg#decrypt()
     endif
 endfunction
 
+function! gpg#get_encrypt_command()
+    if exists('b:gpg#encrypt_command')
+        return b:gpg#encrypt_command
+    else
+        return g:gpg#encrypt_command
+    endif
+endfunction
+
 function! gpg#encrypt()
     if gpg#current_is_gpg_file()
-        if exists('b:gpg#encrypt_command')
-            return b:gpg#encrypt_command
-        elseif exists('g:gpg#encrypt_command')
-            return g:gpg#encrypt_command
-        endif
+        return gpg#get_encrypt_command()
     else
         return ''
     endif
