@@ -1,6 +1,10 @@
 " Generic code, some taken and refactored from Noah Spurrier
 " <noah@noah.org>'s ssl.vim.
 
+" Function that sets up a folding environment.
+call vimcrypt#util#initvar('g:vimcrypt_fold',
+                          \'vimcrypt#fold#setup_pwdfold')
+
 " - Generic functions ----------------------------------------------------------
 
 " @what: 'encrypt' or 'decrypt'
@@ -40,6 +44,11 @@ function! vimcrypt#post()
     setlocal nobin
     setlocal cmdheight&
     setlocal shell&
+    if exists('b:vimcrypt_fold')
+        exec 'call '.b:vimcrypt_fold.'()'
+    elseif !empty(g:vimcrypt_fold)
+        exec 'call '.g:vimcrypt_fold.'()'
+    endif
 endfunction
 
 " @command: Decryption or encryption shell command.

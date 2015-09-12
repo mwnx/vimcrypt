@@ -103,6 +103,17 @@ g:vimcrypt_decrypters				*g:vimcrypt_decrypters*
 
 		Default: ['gpg#decrypt', 'ssl#decrypt']
 
+g:vimcrypt_fold					*g:vimcrypt_fold*
+		The name of a function that will set up a folding environment.
+		Useful for instance in the case that you have a file
+		containing all your passwords and you don't wish for them to
+		be revealed all at once. Set to '' if you don't want folding.
+
+		Default: 'vimcrypt#fold#setup_pwdfold'
+
+b:vimcrypt_fold					*b:vimcrypt_fold*
+		Overrides the above if it exists.
+
 ==============================================================================
 PLUGINS							*vimcrypt-plugins*
 
