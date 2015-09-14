@@ -200,6 +200,18 @@ g:ssl#ciphers						*b:ssl#ciphers*
 		Default: output of 'openssl help' (openssl 1.0.1)
 
 ==============================================================================
+SECURITY						*vimcrypt-security*
+
+Vimcrypt disables viminfo, swapfile, and undofile before reading an encrypted
+file. By default, warnings are also given about (ciphertext) backups. See
+'g:vimcrypt_warn_about_backups'.
+
+For protection against over the shoulder prying, a fold method is provided and
+activated by default on encrypted files. It causes vim to show only the first
+words of each paragraph upon opening a file. This behaviour can be customised
+through 'g:vimcrypt_fold'.
+
+==============================================================================
 BUGS							*vimcrypt-bugs*
 
 - Password retries don't work when reloading a file, e.g. with ':e'. If you
